@@ -16,14 +16,4 @@ export function translator(query) {
       text: query
     }
   })
-
 }
-
-//
-// var api_url = '';
-// var request = require('request');
-// var options = {
-//   url: api_url,
-//   form: {},
-//   headers:
-// };
