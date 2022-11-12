@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { GET_BOOK_AUTHOR } from './gql/books.js';
+import Note from './containers/Note.js';
 
 function App() {
 
@@ -10,10 +11,10 @@ function App() {
   return (
     <div className="App">
       {data.books.map((book) => {
-        console.log(book)
         return (
           <div>
             {book.author}
+            <Note />
           </div>
         )
       })}
