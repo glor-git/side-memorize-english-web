@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="adcc5822-459c-45a7-94bf-d75034dfc33a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/containers/Note.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utill/translator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gql/books.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gql/books.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Note.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Note.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +80,10 @@
       <workItem from="1668167096044" duration="5564000" />
       <workItem from="1668219620344" duration="1168000" />
       <workItem from="1668244460390" duration="120000" />
-      <workItem from="1668244591994" duration="226000" />
+      <workItem from="1668244591994" duration="3330000" />
+      <workItem from="1668253162257" duration="125000" />
+      <workItem from="1668253290883" duration="1848000" />
+      <workItem from="1668255149953" duration="688000" />
     </task>
     <servers />
   </component>

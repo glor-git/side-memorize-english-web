@@ -10,9 +10,9 @@ function App() {
 
   return (
     <div className="App">
-      {data.books.map((book) => {
+      {data.books.map((book, index) => {
         return (
-          <div>
+          <div key={index}>
             {book.author}
             <Note />
           </div>
