@@ -22,3 +22,5 @@
 1. `yarn or yarn install` 노드 모듈 설치
 2. `yarn start:server` 서버 실행
 3. `yarn start:client` 클라이언트 실행
+
+2022.11.11 -
