@@ -48,7 +48,7 @@ const resolvers = {
       const data = {
         id: args.id,
         word: args.word,
-        created_date: args.created_data,
+        created_date: args.created_date,
         user_id: args.user_id
       }
       database.words.push(data)
