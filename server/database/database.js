@@ -1,11 +1,16 @@
 export let database = {
   words: [
     {
-      created_data: '1',
-      en_word: '1',
-      id: '1',
-      kr_word: '1',
-      user_id: '1'
+      id: "1",
+      word: "안녕",
+      created_date: Date,
+      user_id: "aas"
+    },
+    {
+      id: "2",
+      word: "love",
+      created_date: Date,
+      user_id: "aas"
     },
   ]
 };

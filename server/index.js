@@ -3,21 +3,28 @@ import { startStandaloneServer } from '@apollo/server/standalone';
 import { database } from './database/database.js'
 
 const typeDefs = `#graphql
-  type Word {
-    id: String
-    kr_word: String
-    en_word: String
-    created_data: String
-    user_id: String
-  }
+    type Word {
+        id: ID
+        word: String
+        created_date: Date
+        user_id: String
+    }
 
-  type Query {
-    words: [Word]
-  }
+    type Query {
+        words: [Word]
+    }
 
-  type Mutation { 
-    deleteWord(id: String): Word
-  }
+    type Mutation { 
+        deleteWord(id: ID): Word,
+        addWord(
+            id: ID
+            word: String
+            created_date: Date
+            user_id: String
+        ): Word,
+    }
+
+    scalar Date
 `;
 
 const resolvers = {
@@ -35,7 +42,19 @@ const resolvers = {
         return data.id !== args.id
       })
       return deleted
-    }
+    },
+
+    addWord: (parent, args, context, info) => {
+      const data = {
+        id: args.id,
+        word: args.word,
+        created_date: args.created_data,
+        user_id: args.user_id
+      }
+      database.words.push(data)
+
+      return data
+    },
   }
 };
 
