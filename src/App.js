@@ -3,18 +3,25 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_WORDS, DELETE_WORD, ADD_WORD } from './gql/words.js';
 
 function App() {
-  const [words, setWords] = useState([]);
   const [id, setId] = useState(1);
   const [word, setWord] = useState();
   const [userId, setUserId] = useState();
-  const [createdDate, setCreatedDate] = useState(new Date());
-  const [ deleteWord ] = useMutation(DELETE_WORD);
-  const [ addWord ] = useMutation(ADD_WORD);
-  const data = useQuery(GET_WORDS);
+  const { loading, data, error, refetch } = useQuery(GET_WORDS);
+  const [ deleteWord ] = useMutation(DELETE_WORD, { onCompleted: deleteWordCompleted});
+  const [ addWord ] = useMutation(ADD_WORD, { onCompleted: addWordCompleted});
+
+  function addWordCompleted(data) {
+    alert(JSON.stringify(data));
+    refetch();
+  }
+  function deleteWordCompleted(data) {
+    alert(JSON.stringify(data));
+    refetch();
+  }
 
   function execAddWord() {
     setId(prev => prev + 1);
-
+    const createdDate = new Date()
     const data = {
       id: id,
       word: word,
@@ -24,14 +31,8 @@ function App() {
     addWord({ variables: data })
   }
 
-  useEffect(() => {
-    if (data.data !== undefined) {
-      setWords(data.data.words);
-    }
-  }, [data])
-
-  if (data.loading) return <p>Loading...</p>;
-  if (data.error) return <p>Error :(</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
 
   return (
     <div className="App">
@@ -46,7 +47,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {words.map(({ created_date, word, id, user_id }) => {
+          {data.words.map(({ created_date, word, id, user_id }) => {
             return (
               <tr key={id}>
                 <td>{id}</td>
