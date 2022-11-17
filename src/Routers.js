@@ -1,25 +1,26 @@
-import React from 'react';
-import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Main from './page/Main.js';
-import MyNote from './page/MyNote.js';
-import Header from './containers/Header.js'
+import React from "react";
+import { createGlobalStyle } from "styled-components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Main from "./page/Main.js";
+import MyNote from "./page/MyNote.js";
+import Header from "./containers/Header.js";
 
 export default function Routers() {
   return (
-
     <BrowserRouter>
       <GlobalStyles />
       <Header />
       <Routes>
-        <Route path='/' element={<Main />} />
-        <Route path='/myNote' element={<MyNote />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/myNote" element={<MyNote />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 const GlobalStyles = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap');
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -67,5 +68,9 @@ const GlobalStyles = createGlobalStyle`
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+
+  a {
+    text-decoration: none;
   }
 `;

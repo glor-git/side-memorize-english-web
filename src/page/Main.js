@@ -1,20 +1,21 @@
-import { useState, useEffect } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
-import { GET_WORDS, DELETE_WORD, ADD_WORD } from '../gql/words.js';
+import { useState, useEffect } from "react";
+import { useQuery, useMutation } from "@apollo/client";
+import { GET_WORDS, DELETE_WORD, ADD_WORD } from "../gql/words.js";
 import styled from "styled-components";
-import SearchWords from '../containers/components/SearchWords.js'
-import WordBox from '../containers/components/WordBox.js'
+import SearchWords from "../containers/components/SearchWords.js";
+import WordBox from "../containers/components/WordBox.js";
 
 function Main() {
   return (
+    //
     <MainSectionWrapper>
       <SearchWords />
       <WordBox />
     </MainSectionWrapper>
-  )
+  );
 }
 
-const MainSectionWrapper = styled.section `
+const MainSectionWrapper = styled.section`
   background: blue;
 `;
 
