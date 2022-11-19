@@ -16,7 +16,9 @@ function Main() {
 }
 
 const MainSectionWrapper = styled.section`
-  background: blue;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
 `;
 
 export default Main;
