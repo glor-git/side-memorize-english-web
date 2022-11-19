@@ -48,6 +48,9 @@ const GlobalStyles = createGlobalStyle`
     display: block;
   }
 
+  html {
+  }
+  
   body {
     line-height: 1;
   }
