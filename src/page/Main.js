@@ -4,11 +4,18 @@ import { GET_WORDS, DELETE_WORD, ADD_WORD } from "../gql/words.js";
 import styled from "styled-components";
 import SearchWords from "../containers/components/SearchWords.js";
 import WordBox from "../containers/components/WordBox.js";
+import Cover from "../containers/components/Cover.js";
 
 function Main() {
+  const [coverOpen, setCoverOpen] = useState(true);
+
+  const coverClose = () => {
+    setCoverOpen(false);
+  };
+
   return (
-    //
     <MainSectionWrapper>
+      {coverOpen && <Cover coverClose={coverClose} />}
       <SearchWords />
       <WordBox />
     </MainSectionWrapper>
@@ -16,9 +23,11 @@ function Main() {
 }
 
 const MainSectionWrapper = styled.section`
+  position: relative;
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
+  background: blue;
 `;
 
 export default Main;
