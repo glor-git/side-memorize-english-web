@@ -9,13 +9,13 @@ import Cover from "../containers/components/Cover.js";
 function Main() {
   const [coverOpen, setCoverOpen] = useState(true);
 
-  const closeCover = () => {
+  const coverClose = () => {
     setCoverOpen(false);
   };
 
   return (
     <MainSectionWrapper>
-      <Cover open={coverOpen} close={closeCover} />
+      {coverOpen && <Cover coverClose={coverClose} />}
       <SearchWords />
       <WordBox />
     </MainSectionWrapper>
