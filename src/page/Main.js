@@ -16,8 +16,10 @@ function Main() {
   return (
     <MainSectionWrapper>
       {coverOpen && <Cover coverClose={coverClose} />}
-      <SearchWords />
-      <WordBox />
+      <SearchWrapper>
+        <SearchWords />
+        <WordBox />
+      </SearchWrapper>
     </MainSectionWrapper>
   );
 }
@@ -27,9 +29,15 @@ const MainSectionWrapper = styled.section`
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
-  background: blue;
 `;
 
+const  SearchWrapper = styled.div `
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 94px;
+  margin-top: 100px;
+`;
 export default Main;
 
 // const [id, setId] = useState(1);

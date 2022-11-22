@@ -20,22 +20,26 @@ export default function Cover(props) {
 }
 
 const CoverWrapper = styled.div`
+  position: fixed;
+  top: 56px;
+  left: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  position: absolute;
+  gap: 40px;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 56px);
   background-image: url(${CoverSrc});
 `;
 
 const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 500px;
   height: 250px;
-  margin: 0 auto;
-  margin-top: 200px;
+  padding: 35px 50px;
   background-color: #fff;
   border-radius: 40px;
   cursor: pointer;
@@ -46,12 +50,9 @@ const Title = styled.button`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 400px;
-  height: 180px;
+  width: 100%;
+  height: 100%;
   padding: 20px;
-  margin-top: 200px;
-  margin: 0 auto;
-  margin-top: 35px;
   border: 5px solid #000;
   border-radius: 40px;
   font-weight: 900;
@@ -60,7 +61,7 @@ const Title = styled.button`
 `;
 
 const Line = styled.div`
-  width: 350px;
+  width: 100%;
   height: 4px;
   margin-bottom: 10px;
   background-color: #000;
@@ -69,8 +70,6 @@ const Line = styled.div`
 const Button = styled.button`
   width: 130px;
   padding: 15px;
-  margin-top: 40px;
-  box-sizing: border-box;
   background-color: #000;
   border-radius: 40px;
   color: #fff;
