@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { SearchIcon } from "../../static/icon.js";
+import { useSetRecoilState } from 'recoil';
+import { wordState } from '../../atom/word.js';
 
 export default function SearchWords() {
+  const setWord = useSetRecoilState(wordState);
+  const [word2, setWord2 ] = useState('');
+
   return (
     <SearchWordsWrapper>
       <IconWrapper>
-        <SearchIcon />
+        <SearchIconWrapper onClick={() => setWord(word2)}>
+          <SearchIcon />
+        </SearchIconWrapper>
       </IconWrapper>
-      <SearchInput />
+      <SearchInput value={word2} onChange={(e) => setWord2(e.target.value)}/>
     </SearchWordsWrapper>
   );
 }
@@ -31,6 +38,10 @@ const IconWrapper = styled.div`
   svg {
     width: 24px;
   }
+`;
+
+const SearchIconWrapper = styled.div `
+  cursor: pointer;
 `;
 
 const SearchInput = styled.input`

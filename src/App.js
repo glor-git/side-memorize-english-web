@@ -1,5 +1,6 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { RecoilRoot } from 'recoil';
 import Routers from './Routers.js';
 
 function App(props) {
@@ -11,9 +12,11 @@ function App(props) {
 
   return (
     <React.StrictMode>
-      <ApolloProvider client={client}>
-        <Routers />
-      </ApolloProvider>
+      <RecoilRoot>
+        <ApolloProvider client={client}>
+          <Routers />
+        </ApolloProvider>
+      </RecoilRoot>
     </React.StrictMode>
   );
 }

@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CopyIcon, SpeakerIcon, StarIcon } from "../../static/icon.js";
+import { useRecoilValue } from 'recoil';
+import { wordState } from '../../atom/word.js';
+import { translator } from '../../utill/translator.js';
+
 export default function WordBox(props) {
+  const word = useRecoilValue(wordState);
+  const [translatedText, setTranslatedText] = useState('');
+
+  useEffect(() => {
+    if (word !== '') {
+      translator(word).then(res => {
+        setTranslatedText(res);
+      });
+    }
+  }, [word])
+
   return (
     <WordBoxWrapper>
-      <TextWrapper>{"friend, companion, buddy, pal, mate"}</TextWrapper>
+      <TextWrapper>{translatedText.translatedText}</TextWrapper>
       <IconWrapper>
         <CopyIcon />
         <SpeakerIcon />
