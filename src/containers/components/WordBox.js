@@ -40,8 +40,8 @@ const IconWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   align-self: flex-start;
-  cursor: pointer;
   gap: 30px;
+  cursor: pointer;
   svg {
     width: 25px;
   }

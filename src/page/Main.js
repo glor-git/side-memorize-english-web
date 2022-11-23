@@ -44,7 +44,7 @@ export default Main;
 // const [id, setId] = useState(1);
 // const [word, setWord] = useState();
 // const [userId, setUserId] = useState();
-//
+////
 // const { loading, data, error, refetch } = useQuery(GET_WORDS);
 // const [ deleteWord ] = useMutation(DELETE_WORD, { onCompleted: deleteWordCompleted});
 // const [ addWord ] = useMutation(ADD_WORD, { onCompleted: addWordCompleted});

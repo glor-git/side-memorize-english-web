@@ -5,9 +5,9 @@ import { SearchIcon } from "../../static/icon.js";
 export default function SearchWords() {
   return (
     <SearchWordsWrapper>
-      <Icon>
+      <IconWrapper>
         <SearchIcon />
-      </Icon>
+      </IconWrapper>
       <SearchInput />
     </SearchWordsWrapper>
   );
@@ -27,7 +27,7 @@ const SearchWordsWrapper = styled.article`
   border-radius: 62px;
 `;
 
-const Icon = styled.div`
+const IconWrapper = styled.div`
   svg {
     width: 24px;
   }
