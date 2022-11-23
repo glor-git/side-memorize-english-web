@@ -31,10 +31,11 @@ const MainSectionWrapper = styled.section`
   margin: 0 auto;
 `;
 
-const  SearchWrapper = styled.div `
+const SearchWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 94px;
   margin-top: 100px;
 `;
@@ -43,7 +44,7 @@ export default Main;
 // const [id, setId] = useState(1);
 // const [word, setWord] = useState();
 // const [userId, setUserId] = useState();
-//
+////
 // const { loading, data, error, refetch } = useQuery(GET_WORDS);
 // const [ deleteWord ] = useMutation(DELETE_WORD, { onCompleted: deleteWordCompleted});
 // const [ addWord ] = useMutation(ADD_WORD, { onCompleted: addWordCompleted});
