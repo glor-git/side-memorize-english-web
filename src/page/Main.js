@@ -31,10 +31,11 @@ const MainSectionWrapper = styled.section`
   margin: 0 auto;
 `;
 
-const  SearchWrapper = styled.div `
+const SearchWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 94px;
   margin-top: 100px;
 `;
