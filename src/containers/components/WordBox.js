@@ -10,7 +10,7 @@ import { useQuery, useMutation } from "@apollo/client";
 export default function WordBox(props) {
   const [translatedText, setTranslatedText] = useState('');
   const [id, setId] = useRecoilState(idState);
-  const word = useRecoilValue(wordState);
+  const [word, setWord] = useRecoilState(wordState);
   const setWordList = useSetRecoilState(wordListState);
   const { loading, data, error, refetch } = useQuery(GET_WORDS);
   const [ addWord ] = useMutation(ADD_WORD, { onCompleted: addWordCompleted});
@@ -21,7 +21,7 @@ export default function WordBox(props) {
     const data = {
       id: id,
       word: translatedText.translatedText,
-      user_id: userId,
+      // user_id: userId,
       created_date: createdDate,
     }
     addWord({ variables: data })
@@ -35,6 +35,7 @@ export default function WordBox(props) {
     if (word !== '') {
       translator(word).then(res => {
         setTranslatedText(res);
+        setWord('');
       });
     }
   }, [word])
