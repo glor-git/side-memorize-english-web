@@ -1,13 +1,35 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CopyIcon, SpeakerIcon, StarIcon } from "../../static/icon.js";
-import { useRecoilValue } from 'recoil';
-import { wordState } from '../../atom/word.js';
+import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
+import { wordState, wordListState, idState } from '../../atom/word.js';
 import { translator } from '../../utill/translator.js';
+import { GET_WORDS, DELETE_WORD, ADD_WORD } from "../../gql/words.js";
+import { useQuery, useMutation } from "@apollo/client";
 
 export default function WordBox(props) {
-  const word = useRecoilValue(wordState);
   const [translatedText, setTranslatedText] = useState('');
+  const [id, setId] = useRecoilState(idState);
+  const word = useRecoilValue(wordState);
+  const setWordList = useSetRecoilState(wordListState);
+  const { loading, data, error, refetch } = useQuery(GET_WORDS);
+  const [ addWord ] = useMutation(ADD_WORD, { onCompleted: addWordCompleted});
+
+  function execAddWord() {
+    setId(prev => prev + 1);
+    const createdDate = new Date()
+    const data = {
+      id: id,
+      word: translatedText.translatedText,
+      user_id: userId,
+      created_date: createdDate,
+    }
+    addWord({ variables: data })
+  }
+
+  async function addWordCompleted() {
+    refetch();
+  }
 
   useEffect(() => {
     if (word !== '') {
@@ -17,13 +39,21 @@ export default function WordBox(props) {
     }
   }, [word])
 
+  useEffect(() => {
+    if (data) {
+      setWordList(data);
+    }
+  }, [data])
+
   return (
     <WordBoxWrapper>
       <TextWrapper>{translatedText.translatedText}</TextWrapper>
       <IconWrapper>
         <CopyIcon />
         <SpeakerIcon />
-        <StarIcon />
+        <div onClick={execAddWord}>
+          <StarIcon />
+        </div>
       </IconWrapper>
     </WordBoxWrapper>
   );
