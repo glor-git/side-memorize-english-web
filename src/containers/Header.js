@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 export default function Header(props) {
   return (
     <HeaderWrapper>
-      <Logo>My English Note</Logo>
+      <Link to={'/'}><Logo>My English Note</Logo></Link>
       <Items>
         <Item>
           <Link>TodayWords</Link>
         </Item>
         <Item>
-          <Link>MyNote</Link>
+          <Link to={'/myNote'}>MyNote</Link>
         </Item>
       </Items>
     </HeaderWrapper>
@@ -18,6 +18,7 @@ export default function Header(props) {
 }
 const Logo = styled.span`
   font-family: "Rubik Distressed", cursive;
+  color: white;
 `;
 const Items = styled.div`
   display: flex;

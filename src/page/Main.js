@@ -8,7 +8,7 @@ import Cover from "../containers/components/Cover.js";
 
 function Main() {
   const [coverOpen, setCoverOpen] = useState(true);
-
+  
   const coverClose = () => {
     setCoverOpen(false);
   };
