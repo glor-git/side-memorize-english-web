@@ -12,6 +12,7 @@ const typeDefs = `#graphql
 
     type Query {
         words: [Word]
+        word(word: String): Word
     }
 
     type Mutation { 
@@ -30,6 +31,12 @@ const typeDefs = `#graphql
 const resolvers = {
   Query: {
     words: () => database.words,
+    word: (parent, args, context, info) => {
+      const word = database.words.filter(data => {
+        return data.word === args.word
+      })
+      return word[0]
+    },
   },
 
   Mutation: {

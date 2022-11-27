@@ -4,18 +4,26 @@ import { CopyIcon, SpeakerIcon, StarIcon } from "../../static/icon.js";
 import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
 import { wordState, wordListState, idState } from '../../atom/word.js';
 import { translator } from '../../utill/translator.js';
-import { GET_WORDS, DELETE_WORD, ADD_WORD } from "../../gql/words.js";
+import { GET_WORDS, DELETE_WORD, ADD_WORD, GET_WORD } from "../../gql/words.js";
 import { useQuery, useMutation } from "@apollo/client";
 
 export default function WordBox(props) {
+  const [color, setColor] = useState(null);
   const [translatedText, setTranslatedText] = useState('');
   const [id, setId] = useRecoilState(idState);
   const [word, setWord] = useRecoilState(wordState);
-  const setWordList = useSetRecoilState(wordListState);
+  const [wordList, setWordList] = useRecoilState(wordListState);
   const { loading, data, error, refetch } = useQuery(GET_WORDS);
-  const [ addWord ] = useMutation(ADD_WORD, { onCompleted: addWordCompleted});
+  const getWord = useQuery(GET_WORD, { variables: { word: translatedText.translatedText } });
+  const [ addWord ] = useMutation(ADD_WORD, { onCompleted: completed});
+  const [ deleteWord ] = useMutation(DELETE_WORD, { onCompleted: completed});
 
-  function execAddWord() {
+  function execWord() {
+    if (getWord.data.word == null) setAddWord();
+    else setDeleteWord();
+  }
+
+  function setAddWord() {
     setId(prev => prev + 1);
     const createdDate = new Date()
     const data = {
@@ -27,8 +35,22 @@ export default function WordBox(props) {
     addWord({ variables: data })
   }
 
-  async function addWordCompleted() {
+  function setDeleteWord() {
+    console.log(parseInt(getWord.data.word.id))
+    deleteWord({ variables: { id: parseInt(getWord.data.word.id)} })
+  }
+
+  async function completed() {
     refetch();
+    getWord.refetch();
+  }
+
+  function setMyWord() {
+    if (getWord.data !== undefined) {
+      if (getWord.data.word === null) setColor(null);
+      else if (translatedText.translatedText === getWord.data.word.word) setColor('yellow');
+      else setColor(null);
+    }
   }
 
   useEffect(() => {
@@ -46,14 +68,20 @@ export default function WordBox(props) {
     }
   }, [data])
 
+  useEffect(() => {
+    if (data) {
+      setMyWord();
+    }
+  }, [translatedText, getWord.data])
+
   return (
     <WordBoxWrapper>
       <TextWrapper>{translatedText.translatedText}</TextWrapper>
       <IconWrapper>
         <CopyIcon />
         <SpeakerIcon />
-        <div onClick={execAddWord}>
-          <StarIcon />
+        <div onClick={execWord}>
+          <StarIcon color={color}/>
         </div>
       </IconWrapper>
     </WordBoxWrapper>

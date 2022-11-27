@@ -11,10 +11,25 @@ export const GET_WORDS = gql`
     }
 `;
 
+export const GET_WORD = gql`
+    query GetWord ($word: String) {
+        word(word: $word) {
+            created_date
+            id
+            user_id
+            word
+        }
+    }
+`;
+
+
 export const DELETE_WORD = gql`
     mutation DeleteWord($id: ID!) {
         deleteWord(id: $id) {
+            created_date
             id
+            user_id
+            word
         }
     }
 `;
