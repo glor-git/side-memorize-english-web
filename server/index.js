@@ -6,13 +6,14 @@ const typeDefs = `#graphql
     type Word {
         id: ID
         word: String
+        translatedWord: String
         created_date: Date
         user_id: String
     }
 
     type Query {
         words: [Word]
-        word(word: String): Word
+        word(translatedWord: String): Word
     }
 
     type Mutation { 
@@ -20,6 +21,7 @@ const typeDefs = `#graphql
         addWord(
             id: ID
             word: String
+            translatedWord: String
             created_date: Date
             user_id: String
         ): Word,
@@ -33,7 +35,7 @@ const resolvers = {
     words: () => database.words,
     word: (parent, args, context, info) => {
       const word = database.words.filter(data => {
-        return data.word === args.word
+        return data.translatedWord === args.translatedWord
       })
       return word[0]
     },
@@ -56,7 +58,8 @@ const resolvers = {
         id: args.id,
         word: args.word,
         created_date: args.created_date,
-        user_id: args.user_id
+        user_id: args.user_id,
+        translatedWord: args.translatedWord
       }
       database.words.push(data)
 
