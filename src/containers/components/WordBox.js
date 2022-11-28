@@ -14,7 +14,7 @@ export default function WordBox(props) {
   const [word, setWord] = useRecoilState(wordState);
   const [wordList, setWordList] = useRecoilState(wordListState);
   const { loading, data, error, refetch } = useQuery(GET_WORDS);
-  const getWord = useQuery(GET_WORD, { variables: { word: translatedText.translatedText } });
+  const getWord = useQuery(GET_WORD, { variables: { translatedWord: translatedText.translatedText } });
   const [ addWord ] = useMutation(ADD_WORD, { onCompleted: completed});
   const [ deleteWord ] = useMutation(DELETE_WORD, { onCompleted: completed});
 
@@ -28,15 +28,16 @@ export default function WordBox(props) {
     const createdDate = new Date()
     const data = {
       id: id,
-      word: translatedText.translatedText,
+      word: word,
+      translatedWord: translatedText.translatedText,
       // user_id: userId,
       created_date: createdDate,
     }
+
     addWord({ variables: data })
   }
 
   function setDeleteWord() {
-    console.log(parseInt(getWord.data.word.id))
     deleteWord({ variables: { id: parseInt(getWord.data.word.id)} })
   }
 
@@ -48,16 +49,21 @@ export default function WordBox(props) {
   function setMyWord() {
     if (getWord.data !== undefined) {
       if (getWord.data.word === null) setColor(null);
-      else if (translatedText.translatedText === getWord.data.word.word) setColor('yellow');
+      else if (translatedText.translatedText === getWord.data.word.translatedWord) setColor('#FFD84D');
       else setColor(null);
     }
   }
 
   useEffect(() => {
+    return (() => {
+      setWord('');
+    })
+  }, [])
+
+  useEffect(() => {
     if (word !== '') {
       translator(word).then(res => {
         setTranslatedText(res);
-        setWord('');
       });
     }
   }, [word])
