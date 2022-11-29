@@ -5,12 +5,13 @@ import { wordListState } from '../atom/word.js';
 import styled from "styled-components";
 import { StarIcon } from "../static/icon.js";
 import { DELETE_WORD, GET_WORDS } from "../gql/words.js";
+import { Link } from "react-router-dom";
 
 export default function MyNote(props) {
   const [color, setColor] = useState('#FFD84D');
-  const wordList = useRecoilValue(wordListState);
+  // const wordList = useRecoilValue(wordListState);
+  // const { words } = wordList;
   const { loading, data, error, refetch } = useQuery(GET_WORDS);
-  const { words } = wordList;
   const [ deleteWord ] = useMutation(DELETE_WORD, { onCompleted: completed});
 
   async function completed() {
@@ -21,10 +22,10 @@ export default function MyNote(props) {
     await deleteWord({ variables: { id: parseInt(id)} })
   }
 
-  if (wordList.length === 0) return false;
+  if (data === undefined) return false;
   return (
     <MyNoteWrapper>
-      <button>테스트 보기</button>
+      <TestButton><Link to={'/exam'}>테스트 보기</Link></TestButton>
       {data.words.map(word => {
         return (
           <MyWordList>
@@ -43,8 +44,25 @@ export default function MyNote(props) {
 }
 
 const MyNoteWrapper = styled.div `
+  display: flex;
+  flex-direction: column;
   width: 800px;
   margin: 0 auto;
+`;
+
+const TestButton = styled.button `
+  align-self: flex-end;
+  width: 100px;
+  height: 40px;
+  margin-top: 82px;
+  background: #FFFFFF;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  cursor: pointer;
+  
+  a {
+    color: black;
+  }
 `;
 
 const MyWordList = styled.div `
