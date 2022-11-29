@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="adcc5822-459c-45a7-94bf-d75034dfc33a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/components/WordBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/components/WordBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gql/words.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gql/words.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/MyNote.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/MyNote.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/icon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/icon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Header.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +105,11 @@
       <workItem from="1669548488149" duration="93000" />
       <workItem from="1669550078311" duration="5921000" />
       <workItem from="1669614770462" duration="208000" />
-      <workItem from="1669619808152" duration="3797000" />
+      <workItem from="1669619808152" duration="3893000" />
+      <workItem from="1669635221905" duration="259000" />
+      <workItem from="1669636224534" duration="400000" />
+      <workItem from="1669636959227" duration="33000" />
+      <workItem from="1669698366724" duration="199000" />
     </task>
     <servers />
   </component>

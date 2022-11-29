@@ -7,9 +7,6 @@ export default function Header(props) {
       <Link to={'/'}><Logo>My English Note</Logo></Link>
       <Items>
         <Item>
-          <Link>TodayWords</Link>
-        </Item>
-        <Item>
           <Link to={'/myNote'}>MyNote</Link>
         </Item>
       </Items>
