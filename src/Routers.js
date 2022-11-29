@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./page/Main.js";
 import MyNote from "./page/MyNote.js";
+import Exam from "./page/Exam.js";
 import Header from "./containers/Header.js";
 
 export default function Routers() {
@@ -13,6 +14,7 @@ export default function Routers() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/myNote" element={<MyNote />} />
+        <Route path="/exam" element={<Exam />} />
       </Routes>
     </BrowserRouter>
   );
