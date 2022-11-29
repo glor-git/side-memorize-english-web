@@ -24,7 +24,7 @@ export default function MyNote(props) {
   if (wordList.length === 0) return false;
   return (
     <MyNoteWrapper>
-      <button>테스트 보기</button>
+      <TestButton>테스트 보기</TestButton>
       {data.words.map(word => {
         return (
           <MyWordList>
@@ -43,8 +43,21 @@ export default function MyNote(props) {
 }
 
 const MyNoteWrapper = styled.div `
+  display: flex;
+  flex-direction: column;
   width: 800px;
   margin: 0 auto;
+`;
+
+const TestButton = styled.button `
+  align-self: flex-end;
+  width: 100px;
+  height: 40px;
+  margin-top: 82px;
+  background: #FFFFFF;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  cursor: pointer;
 `;
 
 const MyWordList = styled.div `
